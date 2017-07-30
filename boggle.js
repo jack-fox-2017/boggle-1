@@ -73,23 +73,12 @@ class Boggle {
         //
         temp.push(this._board[baris].indexOf(string[0]))
         arrPosisiAwal.push(temp)
-
       }
     }
-    // check isi variabel
-    //console.log(arrPosisiAwal);
-    //console.log(arrPosisiAwal.length);
-
-
     //menemukan kata-kata
     for (var i = 0; i < arrPosisiAwal.length; i++)  {
-      //console.log(this._board);
-      //console.log('awal this_board');
+      // copy this._board agar parameter tidak berubah
       let tempBoard = JSON.parse(JSON.stringify(this._board))
-      //console.log(tempBoard);
-      //console.log('tempboard awal');
-      var kolomAwal = 0
-      var barisAwal = 0
       var tempKata = ''
 
       this._barisAwal = arrPosisiAwal[i][0] -1
@@ -137,7 +126,7 @@ class Boggle {
 }
 
 
-var game1 = new Boggle(5,7)
+var game1 = new Boggle(7,7)
 
 game1.printBoard();
 console.log(game1.runningWithData(data.kamus));
@@ -145,5 +134,3 @@ console.log(game1.runningWithData(data.kamus));
 //console.log(game1.solve('kata'));
 //console.log(game1.solve('muzn'));
 //console.log(game1.solve('izrj'));
-// console.log(data.kamus[0]);
-// console.log(`tes`);
