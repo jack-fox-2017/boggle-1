@@ -34,10 +34,11 @@ class Boggle {
       [ 't', 'n', 'k', 't', 'y' ],
       [ 'd', 'u', 'x', 'a', 'z' ],
       [ 'r', 'i', 'r', 'n', 'z' ],
-      [ 'h', 'y', 'g', 'i', 'r' ],
+      [ 'h', 'k', 'g', 'i', 'r' ],
       [ 'q', 'v', 'p', 'o', 'j' ] ]
 
     var tempBoard = this._board
+    var arrPosisiAwal = []
     var kolomAwal = 0
     var barisAwal = 0
     var string = string
@@ -45,13 +46,21 @@ class Boggle {
 
     //menemukan index awal
     for(let baris = 0; baris < this._baris; baris++){
+      let temp = []
+      temp.push(baris)
       if (this._board[baris].indexOf(string[0]) !== -1) {
+        //
+        temp.push(this._board[baris].indexOf(string[0]))
+        arrPosisiAwal.push(temp)
+
+        //
         barisAwal = baris
         kolomAwal = this._board[baris].indexOf(string[0])
         tempKata += this._board[barisAwal][kolomAwal]
         tempBoard[barisAwal][kolomAwal] = ' '
       }
     }
+    console.log(arrPosisiAwal);
     console.log(barisAwal);
     console.log(kolomAwal);
     console.log(tempBoard);
