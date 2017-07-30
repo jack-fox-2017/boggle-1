@@ -1,6 +1,7 @@
 "use strict"
-// const fs = require('fs');
-// const dictData = fs.readFileSync('data.js', 'utf8')
+
+const data = require('./data');
+// console.log(data.kamus[0]);
 var papan = [
   ['D', 'G', 'H', 'I'],
   ['K', 'L', 'P', 'S'],
@@ -8,12 +9,12 @@ var papan = [
   ['E', 'O', 'R', 'N']
 ];
 
-var dictData = ['APPLE', 'SIT', 'TRIP', 'TURN', 'SUPER', 'NRN'];
 
 class BoggleBoard {
 
     constructor() {
-      // this.board = board;
+      this.dictionary = data.kamus;
+      // this.papan = this.shake(4);
     }
 
     uniqueInput(n) {
@@ -80,6 +81,7 @@ class BoggleBoard {
 
     checkPerSentence(arr) { // 's', 'i', 't'
     var location = [];
+    // let papan = this.papan;
     var match = [];
         for (let y=0; y<papan.length; y++) {
           for (let x=0; x<papan[y].length; x++) {
@@ -211,10 +213,10 @@ class BoggleBoard {
       } else { return false}
     }
 
-    solve(dict){
+    solve(){
       var result = [];
-      for (let i=0; i<dict.length; i++) {
-        var sent = dict[i].split('');
+      for (let i=0; i<this.dictionary.length; i++) {
+        var sent = this.dictionary[i].split('');
         if (this.finalCheck(sent) == true){
           result.push(sent.join(''));
         }
@@ -226,5 +228,5 @@ class BoggleBoard {
 }
 
 var game = new BoggleBoard()
-// console.log(game.shake(5));
-console.log(game.solve(dictData));
+// console.log(game.shake(4));
+console.log(game.solve());
