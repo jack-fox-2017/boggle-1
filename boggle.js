@@ -1,19 +1,15 @@
-// const fs = require('fs')
-// fs.readFileSync('./data.js')
-var words = require('./data.js')
-
 class Boggle {
-  constructor(baris,kolom) {
-    this.board = this.printBoard(baris,kolom)
-    this.kamus = words
+  constructor(barisKolom) {
+    this.board = this.printBoard(barisKolom)
+    this.kamus = require('./data.js')
   }
 
-  printBoard(baris,kolom) {
+  printBoard(barisKolom) {
     var arr = []
     var abjad = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'
-    for (let i=0; i<baris; i++) {
+    for (let i=0; i<barisKolom; i++) {
       let arr2 = []
-      for (let j=0; j<kolom; j++) {
+      for (let j=0; j<barisKolom; j++) {
         arr2.push(abjad.charAt(Math.floor(Math.random()*26)))
       }
       arr.push(arr2)
@@ -22,11 +18,11 @@ class Boggle {
   }
 
   solve() {
-    
+
   }
 
 }
 
-var boggle = new Boggle(5,5)
-console.log(boggle.kamus);
+var boggle = new Boggle(8)
+// console.log(boggle.kamus);
 console.log(boggle.board);
