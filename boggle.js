@@ -2,19 +2,19 @@
 
 const data = require('./data');
 // console.log(data.kamus[0]);
-var papan = [
-  ['D', 'G', 'H', 'I'],
-  ['K', 'L', 'P', 'S'],
-  ['Y', 'E', 'U', 'T'],
-  ['E', 'O', 'R', 'N']
-];
+var papan2 =
+  [ [ 'T', 'M', 'N', 'L' ],
+  [ 'R', 'S', 'U', 'O' ],
+  [ 'C', 'N', 'B', 'B' ],
+  [ 'Z', 'A', 'Z', 'T' ] ];
 
 
 class BoggleBoard {
 
     constructor() {
       this.dictionary = data.kamus;
-      // this.papan = this.shake(4);
+      // this.papan = papan2;
+      this.papan = this.shake(4);
     }
 
     uniqueInput(n) {
@@ -41,6 +41,8 @@ class BoggleBoard {
         }
         papan.push(temp);
       }
+      // console.log('this it it');
+      // console.log(papan);
       return papan;
     }
 
@@ -70,18 +72,28 @@ class BoggleBoard {
 
     checkWordAvailability(arr) {
       // console.log(arr+'availbilty');
-      var freqPapan = this.countPapan(papan)
+      var freqPapan = this.countPapan(this.papan)
       var freqDict = this.countDictWord(arr) // { A: 1, P: 2, L: 1, E: 1 }
+      // console.log(freqPapan);
+      // console.log(freqDict);
       for (let i=0; i<arr.length; i++) {
-        if(freqPapan[arr[i]] < freqDict[arr[i]])
+        // console.log('papan'+freqPapan[arr[i]]);
+        // console.log('dictyoo'+freqDict[arr[i]]);
+        if(freqPapan[arr[i]] < freqDict[arr[i]] || freqPapan[arr[i]] ==null){
+        // console.log('papan'+freqPapan[arr[i]]);
+        // console.log('dictyoo'+freqDict[arr[i]]);
         return false;
+        }
       }
       return true;
     }
 
     checkPerSentence(arr) { // 's', 'i', 't'
+    // console.log('loo k sni');
     var location = [];
-    // let papan = this.papan;
+    let papan = this.papan;
+    // console.log(papan);
+    // console.log('LOLOLOLO');
     var match = [];
         for (let y=0; y<papan.length; y++) {
           for (let x=0; x<papan[y].length; x++) {
@@ -207,10 +219,13 @@ class BoggleBoard {
       // console.log(arr+'final');
       if (this.checkWordAvailability(arr) == true) {
         if (this.checkPerSentence(arr) == true) {
-          console.log(arr);
+          // console.log(arr);
           return true;
         }
-      } else { return false}
+      } else {
+        // console.log('bener kok');
+      return false
+      }
     }
 
     solve(){
@@ -228,5 +243,8 @@ class BoggleBoard {
 }
 
 var game = new BoggleBoard()
-// console.log(game.shake(4));
+console.log('THE BOARD: ');
+console.log(game.papan);
+// console.log(data.kamus);
+console.log('THE RESULT: ');
 console.log(game.solve());
