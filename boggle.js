@@ -1,18 +1,3 @@
-// function createBoard(size){
-//   let arr = [];
-//   let alphabet = ['a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z']
-//
-//   for(let i = 0;i < size;i++){
-//     arr.push([]);
-//     for(let j = 0;j < size;j++){
-//       arr[i].push(alphabet[Math.floor(Math.random() * alphabet.length)]);
-//     }
-//   }return arr;
-// }
-//
-// console.log(createBoard(5));
-//console.log(createBoard(3));
-
 "use strict"
 
 class Boggle {
